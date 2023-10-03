@@ -21,7 +21,7 @@ def generate_historical_day(date, start_date, data_list):
     """
 
     num_entries = 5000  # 5000 rows per day
-    ids = np.arange(1001)  # IDs from 0 to 500
+    ids = np.arange(5001)  # IDs from 0 to 5000
 
     # Calculate smoother price variations with increased range and seasonality
     days_since_start = (date - start_date).days
@@ -84,7 +84,7 @@ def generate_today():
                           selected ID, and a random price value.
     """
     num_entries = 5000  # 5000 rows per day
-    ids = np.arange(1001)  # IDs from 0 to 1000
+    ids = np.arange(5001)  # IDs from 0 to 5000
     data_list = []
     date = datetime.date.today()
     

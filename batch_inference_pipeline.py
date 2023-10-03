@@ -1,5 +1,6 @@
 import streamlit as st
 import hopsworks
+from hsfs.feature import Feature
 from features.price import plot_historical_id, plot_prediction
 import joblib
 from datetime import datetime, timedelta
@@ -16,6 +17,13 @@ st.write("✅ Logged in successfully!")
 
 @st.cache_resource()
 def get_feature_view():
+    st.write("🪝 Retrieving the Prices Feature Group...")
+    prices_fg = fs.get_or_create_feature_group(
+        name='prices',
+        version=1,
+    )
+    st.write("✅ Success!")
+
     st.write("🪝 Retrieving the Feature View...")
     feature_view = fs.get_feature_view(
         name = 'price_fv',
@@ -23,23 +31,21 @@ def get_feature_view():
     )
     st.write("✅ Success!")
 
-    return feature_view
+    return prices_fg, feature_view
 
-
-feature_view = get_feature_view()
+prices_fg, feature_view = get_feature_view()
 
 
 @st.cache_data()
-def get_data_from_feature_store():
+def get_data_from_feature_group(_prices_fg):
     st.write("🪝 Retrieving Data from Feature Store...")
-    # Retrieve batch data
-    data = feature_view.query.read()
+    data = prices_fg.read()
 
     st.write("✅ Success!")
 
     return data
 
-data = get_data_from_feature_store()
+data = get_data_from_feature_group(prices_fg)
 
 fig = plot_historical_id([1, 2], data)
 
@@ -93,7 +99,6 @@ def predict_id(id_value, data, model):
     return preds
 
 id = 1
-
 predictions = predict_id(id, batch_data.drop('date', axis=1), model)
 
 fig_pred = plot_prediction(id, data, week_ago, predictions)
