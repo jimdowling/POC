@@ -2,3 +2,6 @@
 .DS_Store
 features/__pycache__/averages.cpython-39.pyc
 features/__pycache__/price.cpython-39.pyc
+.ipynb_checkpoints/1_feature_backfill-checkpoint.ipynb
+.ipynb_checkpoints/3_training_pipeline-checkpoint.ipynb
+.ipynb_checkpoints/4_batch_inference_pipeline-checkpoint.ipynb
