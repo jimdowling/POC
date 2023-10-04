@@ -8,10 +8,10 @@ generated_data_today = generate_today()
 project = hopsworks.login()
 fs = project.get_feature_store() 
 
-# Retrieve Prices Feature Group
-prices_fg = fs.get_or_create_feature_group(
-    name='prices',
+# Retrieve Price Feature Group
+price_fg = fs.get_or_create_feature_group(
+    name='price',
     version=1,
 )
-# Insert generated data for today into Prices Feature Group
-prices_fg.insert(generated_data_today)
+# Insert generated data for today into Price Feature Group
+price_fg.insert(generated_data_today)

@@ -11,9 +11,9 @@ averages_fg = fs.get_or_create_feature_group(
     name='averages',
     version=1,
 )
-# Retrieve Prices Feature Group
-prices_fg = fs.get_or_create_feature_group(
-    name='prices',
+# Retrieve Price Feature Group
+price_fg = fs.get_or_create_feature_group(
+    name='price',
     version=1,
 )
 # Get today's date
@@ -23,7 +23,7 @@ today = datetime.today()
 thirty_days_ago = (today - timedelta(days=31)).strftime("%Y-%m-%d")
 
 # Read price data for 30 days ago
-month_price_data = prices_fg.filter(prices_fg.date >= thirty_days_ago).read()
+month_price_data = price_fg.filter(price_fg.date >= thirty_days_ago).read()
 
 # Calculate second order features
 averages_df = calculate_second_order_features(month_price_data)
