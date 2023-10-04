@@ -5,3 +5,5 @@ features/__pycache__/price.cpython-39.pyc
 .ipynb_checkpoints/1_feature_backfill-checkpoint.ipynb
 .ipynb_checkpoints/3_training_pipeline-checkpoint.ipynb
 .ipynb_checkpoints/4_batch_inference_pipeline-checkpoint.ipynb
+.ipynb_checkpoints/2b_averages_feature_pipeline-checkpoint.py
+.ipynb_checkpoints/2a_price_feature_pipeline-checkpoint.py

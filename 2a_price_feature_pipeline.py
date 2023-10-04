@@ -1,5 +1,10 @@
+# +
 import hopsworks
 from features.price import generate_today
+
+import warnings
+warnings.filterwarnings('ignore')
+# -
 
 # Generate price data form today
 generated_data_today = generate_today()

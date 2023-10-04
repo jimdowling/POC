@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
 from features.averages import calculate_second_order_features
 import hopsworks
+import warnings
+warnings.filterwarnings('ignore')
 
 # Connect to the Feature Store
 project = hopsworks.login()
